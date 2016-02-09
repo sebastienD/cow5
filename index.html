@@ -18,8 +18,8 @@
 		var tileH = width/2;
 		for (var i=0; i<nbDeep; i++) {
 			for (var j=0; j<nbLarge; j++) {
-				var x = zeroX + j * (tileW/2) + i *(tileW/2);
-				var y = zeroY + j * (tileH/2) - i * (tileH/2);
+				var x = zeroX + (j+i) * (tileW/2);
+				var y = zeroY + (j-i) * (tileH/2);
 				var polygon = new createjs.Shape();
 				polygon.graphics.beginStroke("black").beginFill("green");
 				polygon.graphics.moveTo(x, y).lineTo(x+(tileW/2), y-(tileH/2)).lineTo(x+tileW, y).lineTo(x+(tileW/2), y+(tileH/2)).lineTo(x, y);
