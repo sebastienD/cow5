@@ -1,0 +1,60 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+	<script>
+  function init() {
+    var stage = new createjs.Stage("demoCanvas");
+
+    var circle = new createjs.Shape();
+	circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+	circle.x = 100;
+	circle.y = 100;
+	stage.addChild(circle);
+
+	var rec = new createjs.Shape();
+	rec.graphics.beginStroke("red").beginFill("blue").drawRect(0, 0, 100, 100);
+	rec.regX = 50;
+	rec.regY = 50;
+	rec.x = 100;
+	rec.y = 100;
+	rec.rotation = 45;
+	rec.h = 50;
+	stage.addChild(rec);
+
+	tiles(2,2);
+
+	createjs.Ticker.setFPS(60);
+	createjs.Ticker.addEventListener("tick", onTick);
+
+	function tiles(nbX, nbY) {
+		var x = 0;
+		var y = 100;
+		var tileW = 100;
+		var tileH = 50;
+		for (var i=0; i<nbX; i++) {
+			for (var j=0; j<nbY; j++) {
+				x += j * (tileW/2);
+				y += i * (tileH/2);
+				var polygon = new createjs.Shape();
+				polygon.graphics.beginStroke("black").beginFill("red");
+				polygon.graphics.moveTo(x, y).lineTo(x+50, y-25).lineTo(x+100, y).lineTo(x+50, y+25).lineTo(x, y);
+				stage.addChild(polygon);
+			}
+		}
+	}
+
+	function onTick() {
+    	//rec.rotation++;
+    	stage.update();
+    	stage.removeChild(rec);
+	}
+	
+  }
+</script>
+</head>
+<body onload="init();">
+  <canvas id="demoCanvas" width="500" height="300"></canvas>
+  <canvas id="canvas" width="680" height="400"> Canvas not supported. Please update your browser. </canvas>
+</body>
+</html>
