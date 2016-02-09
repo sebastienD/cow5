@@ -6,7 +6,7 @@
   function init() {
     var stage = new createjs.Stage("ground");
 
-	tiles(100,8,8);
+	tiles(10,80,80);
 
 	createjs.Ticker.setFPS(60);
 	createjs.Ticker.addEventListener("tick", onTick);
@@ -22,7 +22,7 @@
 				var y = zeroY + j * (tileH/2) - i * (tileH/2);
 				var polygon = new createjs.Shape();
 				polygon.graphics.beginStroke("black").beginFill("green");
-				polygon.graphics.moveTo(x, y).lineTo(x+50, y-25).lineTo(x+100, y).lineTo(x+50, y+25).lineTo(x, y);
+				polygon.graphics.moveTo(x, y).lineTo(x+(tileW/2), y-(tileH/2)).lineTo(x+tileW, y).lineTo(x+(tileW/2), y+(tileH/2)).lineTo(x, y);
 				stage.addChild(polygon);
 			}
 		}
